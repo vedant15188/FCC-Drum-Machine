@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <title>FCC Drum Machine</title>
+
+    <style>
+        .b {
+            border: #000000 solid 1px;
+        }
+        .row {
+            height: 33.33%;
+        }
+        .btn {
+            height: 100%;
+        }
+        .col-4 {
+            padding: 10px 10px 10px 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container" id="drum-machine">
+        <div class="row" style="min-width: inherit; min-height: 40vh; margin-top: 20vh;">
+            <div class="col-12 b">
+                <div class="row">
+                    <div class="col-4">
+                        <button type="button" id="drum-Q" class="drum-pad btn btn-outline-primary btn-block" onclick="playAudio(this.id)">
+                            <audio src="https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3" class="clip" id="Q"></audio>Q
+                        </button>
+                    </div>
+                    <div class="col-4">
+                        <button type="button" id="drum-W" class="drum-pad btn btn-outline-primary btn-block" onclick="playAudio(this.id)">
+                            <audio src="https://s3.amazonaws.com/freecodecamp/drums/Heater-2.mp3" class="clip" id="W"></audio>W
+                        </button>
+                    </div>
+                    <div class="col-4">
+                        <button type="button" id="drum-E" class="drum-pad btn btn-outline-primary btn-block" onclick="playAudio(this.id)">
+                            <audio src="https://s3.amazonaws.com/freecodecamp/drums/Heater-3.mp3" class="clip" id="E"></audio>E
+                        </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <button type="button" id="drum-A" class="drum-pad btn btn-outline-primary btn-block" onclick="playAudio(this.id)">
+                            <audio src="https://s3.amazonaws.com/freecodecamp/drums/Heater-4_1.mp3" class="clip" id="A"></audio>A
+                        </button>
+                    </div>
+                    <div class="col-4">
+                        <button type="button" id="drum-S" class="drum-pad btn btn-outline-primary btn-block" onclick="playAudio(this.id)">
+                            <audio src="https://s3.amazonaws.com/freecodecamp/drums/Heater-6.mp3" class="clip" id="S"></audio>S
+                        </button>
+                    </div>
+                    <div class="col-4">
+                        <button type="button" id="drum-D" class="drum-pad btn btn-outline-primary btn-block" onclick="playAudio(this.id)">
+                            <audio src="https://s3.amazonaws.com/freecodecamp/drums/RP4_KICK_1.mp3" class="clip" id="D"></audio>D
+                        </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <button type="button" id="drum-Z" class="drum-pad btn btn-outline-primary btn-block" onclick="playAudio(this.id)">
+                            <audio src="https://s3.amazonaws.com/freecodecamp/drums/Cev_H2.mp3" class="clip" id="Z"></audio>Z
+                        </button>
+                    </div>
+                    <div class="col-4">
+                        <button type="button" id="drum-X" class="drum-pad btn btn-outline-primary btn-block" onclick="playAudio(this.id)">
+                            <audio src="https://s3.amazonaws.com/freecodecamp/drums/Dsc_Oh.mp3" class="clip" id="X"></audio>X
+                        </button>
+                    </div>
+                    <div class="col-4">
+                        <button type="button" id="drum-C" class="drum-pad btn btn-outline-primary btn-block" onclick="playAudio(this.id)">
+                            <audio src="https://s3.amazonaws.com/freecodecamp/drums/Dry_Ohh.mp3" class="clip" id="C"></audio>C
+                        </button>
+                    </div>
+                </div>
+            </div><br>
+        </div>
+        <div class="row" id="display">
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('keydown', function (e) {
+            try {
+                document.getElementById(e.key.toUpperCase()).play();
+                document.getElementById("display").innerHTML = `<h1>${e.key.toUpperCase()} was played!</h1>`;
+            } catch (e) {}
+        });
+
+        function playAudio(id) {
+            var arr = id.split('-');
+            document.getElementById("display").innerHTML = `<h1>${id.split('-')[1]} was played!</h1>`;
+            document.getElementById(arr[1]).play();
+        }
+    </script>
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>
